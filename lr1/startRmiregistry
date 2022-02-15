@@ -1,0 +1,2 @@
+cd /home/dazzlemon/github/components/lr1/target/classes
+/usr/lib/jvm/java-17-openjdk/bin/rmiregistry
