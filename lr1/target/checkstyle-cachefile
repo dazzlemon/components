@@ -1,8 +1,8 @@
-#Tue Feb 15 20:37:07 EET 2022
-module-resource*?\:checkstyle/suppressions.xml=E8DA2793511A1CB5B343782ECAD8FBFDB7A0704E
-/home/dazzlemon/github/components/lr1/src/main/java/com/lr1/App.java=1644945788872
-/home/dazzlemon/github/components/lr1/src/main/java/com/lr1/Client.java=1644947648074
-/home/dazzlemon/github/components/lr1/src/main/java/com/lr1/Hello.java=1644946131776
-/home/dazzlemon/github/components/lr1/src/main/java/com/lr1/Server.java=1644949440406
-/home/dazzlemon/github/components/lr1/src/test/java/com/lr1/AppTest.java=1644939077418
+#Wed Mar 23 10:49:55 EET 2022
 configuration*?=7FBE2FC76B8D6DCC69094BF87EBD4C13A79C8BD7
+/home/dazzlemon/github/components/lr1/src/main/java/com/lr1/ChatServerImplementation.java=1648025385804
+/home/dazzlemon/github/components/lr1/src/test/java/com/lr1/AppTest.java=1644939077418
+/home/dazzlemon/github/components/lr1/src/main/java/com/lr1/ChatClient.java=1648024793545
+module-resource*?\:checkstyle/suppressions.xml=E2286D0391A73DA84888C192AE34C6249838904C
+/home/dazzlemon/github/components/lr1/src/main/java/com/lr1/App.java=1644945788872
+/home/dazzlemon/github/components/lr1/src/main/java/com/lr1/ChatServer.java=1648024802651
