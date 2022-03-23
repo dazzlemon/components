@@ -49,7 +49,7 @@ public final class ChatClient extends UnicastRemoteObject {
 
 					System.out.println("Continue?(Y if yes / Anything else otherwise)");
 					var ans = sc.nextLine();
-					if (ans.equals("Y")) {
+					if (!ans.equals("Y")) {
 						exit = true;
 					}
 				}
