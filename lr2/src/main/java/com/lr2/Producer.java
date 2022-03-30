@@ -1,7 +1,6 @@
 package com.lr2;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
@@ -22,11 +21,11 @@ public class Producer extends HttpServlet {
 		var text = MoreObjects.firstNonNull(req.getParameter("text"), "Hello World");
 		var out = res.getWriter();
 		try {
-			var ic = new InitialContext();
-			var cf = (ConnectionFactory) ic.lookup("/ConnectionFactory");
-			var q = (Queue) ic.lookup("queue/tutorialQueue");
-			try (var context = cf.createContext()) {
-				context.createProducer().send(q, text);
+			var initialContext = new InitialContext();
+			var connectionFactory = (ConnectionFactory) initialContext.lookup("/ConnectionFactory");
+			var queue = (Queue) initialContext.lookup("queue/tutorialQueue");
+			try (var context = connectionFactory.createContext()) {
+				context.createProducer().send(queue, text);
 			}
 		} catch (Exception e) {
 			out.printf("Error while trying to send <%s> message: %s", text, e);
