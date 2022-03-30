@@ -1,14 +1,14 @@
 package com.lr2;
 
-import javax.ejb.MessageDriven;
+import jakarta.ejb.MessageDriven;
+import jakarta.ejb.ActivationConfigProperty;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 import lombok.extern.java.Log;
-
-import javax.ejb.ActivationConfigProperty;
 
 @MessageDriven(activationConfig = {
 	@ActivationConfigProperty(
