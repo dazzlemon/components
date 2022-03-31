@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.lr2.AppTest" time="0.017" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.lr2.AppTest" time="0.022" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk/lib"/>
-    <property name="sun.java.command" value="/home/dazzlemon/github/components/lr2/target/surefire/surefirebooter18146515673859662091.jar /home/dazzlemon/github/components/lr2/target/surefire 2022-03-30T23-06-43_907-jvmRun1 surefire17978646290020438320tmp surefire_010065398814691787985tmp"/>
+    <property name="sun.java.command" value="/home/dazzlemon/github/components/lr2/target/surefire/surefirebooter3879829891914372940.jar /home/dazzlemon/github/components/lr2/target/surefire 2022-03-31T17-11-08_539-jvmRun1 surefire6498137107191298909tmp surefire_010194776916142420570tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/dazzlemon/github/components/lr2/target/test-classes:/home/dazzlemon/github/components/lr2/target/classes:/home/dazzlemon/.m2/repository/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar:/home/dazzlemon/.m2/repository/jakarta/jms/jakarta.jms-api/2.0.3/jakarta.jms-api-2.0.3.jar:/home/dazzlemon/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/dazzlemon/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/dazzlemon/.m2/repository/jakarta/ejb/jakarta.ejb-api/4.0.0/jakarta.ejb-api-4.0.0.jar:/home/dazzlemon/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.0/jakarta.transaction-api-2.0.0.jar:/home/dazzlemon/.m2/repository/jakarta/servlet/jakarta.servlet-api/5.0.0/jakarta.servlet-api-5.0.0.jar:/home/dazzlemon/.m2/repository/com/google/guava/guava/23.0/guava-23.0.jar:/home/dazzlemon/.m2/repository/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar:/home/dazzlemon/.m2/repository/com/google/errorprone/error_prone_annotations/2.0.18/error_prone_annotations-2.0.18.jar:/home/dazzlemon/.m2/repository/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1.jar:/home/dazzlemon/.m2/repository/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/dazzlemon/github/components/lr2/target/surefire/surefirebooter18146515673859662091.jar"/>
+    <property name="surefire.real.class.path" value="/home/dazzlemon/github/components/lr2/target/surefire/surefirebooter3879829891914372940.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.3+3"/>
     <property name="user.name" value="dazzlemon"/>

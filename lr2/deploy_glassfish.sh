@@ -1,0 +1,1 @@
+sudo /opt/glassfish/bin/asadmin deploy target/lr2-1.0.war
