@@ -18,11 +18,13 @@ public class Producer extends HttpServlet {
 	protected void doGet(
 		HttpServletRequest req, HttpServletResponse res
 	) throws ServletException, IOException {
-		var text = MoreObjects.firstNonNull(req.getParameter("text"), "Hello World");
+		var text = MoreObjects.firstNonNull(
+			req.getParameter("text"), "Hello World");
 		var out = res.getWriter();
 		try {
 			var initialContext = new InitialContext();
-			var connectionFactory = (ConnectionFactory) initialContext.lookup("/ConnectionFactory");
+			var connectionFactory = (ConnectionFactory) initialContext.lookup(
+				"jms/__defaultConnectionFactory");
 			var queue = (Queue) initialContext.lookup("queue/tutorialQueue");
 			try (var context = connectionFactory.createContext()) {
 				context.createProducer().send(queue, text);
