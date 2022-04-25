@@ -4,6 +4,14 @@
  */
 package web;
 
+import jakarta.annotation.Resource;
+import jakarta.jms.Connection;
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.JMSException;
+import jakarta.jms.MessageProducer;
+import jakarta.jms.Queue;
+import jakarta.jms.Session;
+import jakarta.jms.TextMessage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -18,6 +26,11 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "MyServlet", urlPatterns = {"/MyServlet"})
 public class MyServlet extends HttpServlet {
+    @Resource(mappedName="myConnectionFactory")
+    private ConnectionFactory connectionFactory;
+    
+    @Resource(mappedName="myDestinationResource")
+    private Queue destinationQueue;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,10 +41,24 @@ public class MyServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Reading inputs from form
+    protected void processRequest(
+        HttpServletRequest request, HttpServletResponse response
+    ) throws ServletException, IOException {
         String name = request.getParameter("name");
+        
+        try (
+            Connection connection = connectionFactory.createConnection();
+            Session session = connection.createSession(
+                false, Session.AUTO_ACKNOWLEDGE);
+            MessageProducer messageProducer = session.createProducer(
+                destinationQueue)
+        ) {
+            TextMessage textMessage = session.createTextMessage();
+            textMessage.setText(name);
+            messageProducer.send(textMessage);
+        } catch (JMSException e) {
+            // TODO
+        }
         
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
