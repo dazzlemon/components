@@ -5,6 +5,7 @@
 package web;
 
 import jakarta.annotation.Resource;
+
 import jakarta.jms.Connection;
 import jakarta.jms.ConnectionFactory;
 import jakarta.jms.JMSException;
@@ -12,13 +13,15 @@ import jakarta.jms.MessageProducer;
 import jakarta.jms.Queue;
 import jakarta.jms.Session;
 import jakarta.jms.TextMessage;
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import java.util.logging.Level;
 
@@ -49,33 +52,34 @@ public class MyServlet extends HttpServlet {
     protected void processRequest(
         HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
-        String name = request.getParameter("name");
+        var numberStr = request.getParameter("name");
+        var number = Double.parseDouble(numberStr);
+        var squared = number * number;
         
         try (
-            Connection connection = connectionFactory.createConnection();
-            Session session = connection.createSession(
+            var connection = connectionFactory.createConnection();
+            var session = connection.createSession(
                 false, Session.AUTO_ACKNOWLEDGE);
-            MessageProducer messageProducer = session.createProducer(
+            var messageProducer = session.createProducer(
                 destinationQueue)
         ) {
-            TextMessage textMessage = session.createTextMessage();
-            textMessage.setText(name);
+            var textMessage = session.createTextMessage();
+            textMessage.setText(numberStr);
             messageProducer.send(textMessage);
-            log.log(Level.INFO, "Message sent: \"{0}\"", name);
+            log.log(Level.INFO, "Message sent: \"{0}\"", numberStr);
         } catch (JMSException e) {
             log.throwing("MyServlet", "processRequest", e);
         }
                 
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+        try (var out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MyServlet</title>");            
+            out.println("<title>" + numberStr + "^2=" + squared + "</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Your name is " + name + "</h1>");
+            out.println("<h1>" + numberStr + " squared is " + squared + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

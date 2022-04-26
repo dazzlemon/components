@@ -7,6 +7,7 @@ import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.MessageListener;
 import jakarta.jms.TextMessage;
+
 import java.util.logging.Level;
 
 import lombok.extern.java.Log;
@@ -25,13 +26,9 @@ import lombok.extern.java.Log;
 })
 @Log
 public class MyMessageDrivenBean implements MessageListener {
-    /**
-     *
-     * @param message
-     */
     @Override
     public void onMessage(Message message) {
-        TextMessage textMessage = (TextMessage) message; 
+        var textMessage = (TextMessage) message; 
         try {
             log.log(Level.INFO, "Message received: \"{0}\"", textMessage.getText());
         } catch (JMSException e) {
