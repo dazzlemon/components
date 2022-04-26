@@ -52,8 +52,25 @@ public class MyServlet extends HttpServlet {
     protected void processRequest(
         HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
-        var numberStr = request.getParameter("name");
-        var number = Double.parseDouble(numberStr);
+        var numberStr = request.getParameter("number");
+        Double number;
+        try {
+            number = Double.parseDouble(numberStr);
+        } catch (NumberFormatException e) {
+            response.setContentType("text/html;charset=UTF-8");
+            try (var out = response.getWriter()) {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>BAD STRING</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>" + numberStr + " is not a number!</h1>");
+                out.println("</body>");
+                out.println("</html>");
+            }
+            return;
+        }
         var squared = number * number;
         
         try (

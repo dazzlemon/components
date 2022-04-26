@@ -30,7 +30,8 @@ public class MyMessageDrivenBean implements MessageListener {
     public void onMessage(Message message) {
         var textMessage = (TextMessage) message; 
         try {
-            log.log(Level.INFO, "Message received: \"{0}\"", textMessage.getText());
+            log.log(
+                Level.INFO, "Message received: \"{0}\"", textMessage.getText());
         } catch (JMSException e) {
             log.throwing("MyMessageDrivenBean", "onMessage", e);
         }
