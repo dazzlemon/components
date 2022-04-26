@@ -20,10 +20,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.util.logging.Level;
+
+import lombok.extern.java.Log;
+
 /**
  *
  * @author dazzlemon
  */
+@Log
 @WebServlet(name = "MyServlet", urlPatterns = {"/MyServlet"})
 public class MyServlet extends HttpServlet {
     @Resource(mappedName="myConnectionFactory")
@@ -56,10 +61,11 @@ public class MyServlet extends HttpServlet {
             TextMessage textMessage = session.createTextMessage();
             textMessage.setText(name);
             messageProducer.send(textMessage);
+            log.log(Level.INFO, "Message sent: \"{0}\"", name);
         } catch (JMSException e) {
-            // TODO
+            log.throwing("MyServlet", "processRequest", e);
         }
-        
+                
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
