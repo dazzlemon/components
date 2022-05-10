@@ -12,7 +12,7 @@ import javax.naming.NamingException;
 
 import lombok.extern.java.Log;
 
-@WebServlet(urlPatterns = {"/example"})
+@WebServlet(urlPatterns = {"/user"})
 @Log
 public class UserProfileServlet extends HttpServlet {
 
