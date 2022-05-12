@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "reg", urlPatterns = {"/reg"})
+@WebServlet(name = "insert", urlPatterns = {"/insert"})
 public class Page extends HttpServlet {
     @EJB
     private ProductFacadeLocal productFacade;
@@ -26,11 +26,11 @@ public class Page extends HttpServlet {
         HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            String id = request.getParameter("id");
-            String name = request.getParameter("name");
-            String quantity = request.getParameter("quantity");
-            String priceInUsdCents = request.getParameter("priceInUsdCents");
+        try (PrintWriter out = response.getWriter()) {
+            var id              = request.getParameter("id");
+            var name            = request.getParameter("name");
+            var quantity        = request.getParameter("quantity");
+            var priceInUsdCents = request.getParameter("priceInUsdCents");
             boolean result = productFacade.insertProduct(
                 Integer.parseInt(id),
                 name,
@@ -41,10 +41,11 @@ public class Page extends HttpServlet {
             out.println("name: " + name);
             out.println("quantity: " + quantity);
             out.println("priceInUsdCents: " + priceInUsdCents);
-            out.println("Attempt to add new product: " + result);      
+            out.println("Sucessfull insert: " + result);      
         }
     }
    
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -83,5 +84,4 @@ public class Page extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

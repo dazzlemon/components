@@ -13,12 +13,12 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form action="reg" method="post">
+        <form action="insert" method="post">
             <table>
                 <tr>
                     <th>id</th>
                     <td><input
-                        type="text"
+                        type="int"
                         name="id"
                         placeholder="id"
                     ></td>
