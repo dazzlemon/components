@@ -75,4 +75,6 @@ public class Product implements Serializable {
     @Basic(optional = false)
     @Column(name = "PriceInUsdCents")
     private int priceInUsdCents;
+    
+    public Product() {}
 }
