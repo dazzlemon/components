@@ -19,6 +19,7 @@ import lombok.ToString;
 import lombok.NonNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Table(name = "Product")
@@ -38,13 +39,15 @@ import lombok.EqualsAndHashCode;
         WHERE p.priceInUsdCents = :priceInUsdCents
     """)
 })
-@ToString
+@ToString(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@RequiredArgsConstructor
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @EqualsAndHashCode.Include
+    @ToString.Include
     @NonNull
     @Getter
     @Setter
@@ -72,8 +75,4 @@ public class Product implements Serializable {
     @Basic(optional = false)
     @Column(name = "PriceInUsdCents")
     private int priceInUsdCents;
-
-    public Product(Integer id) {
-        this.id = id;
-    }
 }
