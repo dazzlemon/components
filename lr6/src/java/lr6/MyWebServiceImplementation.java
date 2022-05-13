@@ -6,8 +6,14 @@ import javax.xml.ws.Endpoint;
 @WebService(endpointInterface = "lr6.MyWebService")
 public class MyWebServiceImplementation implements MyWebService {
     @Override
-    public String getHelloString(String name) {
-        return "Hello, " + name + "!";
+    public Double calculate(Double n1, Operator op, Double n2) {
+        switch (op) {
+            case MINUS: return n1 - n2;
+            case PLUS: return n1 + n2;
+            case DIV: return n1 / n2;
+            case MUL: return n1 * n2;
+        }
+        return null;// never happens
     }
     
     public static void main(String... args) {

@@ -12,7 +12,22 @@ public class MyWebServiceClient {
                                , "MyWebServiceImplementationService"
                                );
         Service service = Service.create(url, qname);
-        MyWebService hello = service.getPort(MyWebService.class);
-        System.out.println(hello.getHelloString("Daniel Safonov"));
+        MyWebService myWebService = service.getPort(MyWebService.class);
+
+        double n1 = 1.;
+        double n2 = 99.;
+        Operator op = Operator.PLUS;
+        
+        String opStr = "";
+        switch (op) {
+            case MINUS: opStr = " - "; break;
+            case PLUS:  opStr = " + "; break;
+            case DIV:   opStr = " / "; break;
+            case MUL:   opStr = " * ";
+        }
+        
+        System.out.println( n1 + opStr + n2 + " = " +
+                           myWebService.calculate(n1, op, n2)
+                          );
     }
 }
